@@ -1,0 +1,23 @@
+project:
+  name: bank-marketing-drift-monitoring
+  seed: 42
+
+data:
+  raw_path: data/raw
+  processed_path: data/processed
+  reference_path: data/reference
+  production_path: data/production
+
+model:
+  type: logistic_regression
+
+mlflow:
+  tracking_uri: file:./mlflow
+  experiment_name: bank_marketing_monitoring
+
+monitoring:
+  p_value_threshold: 0.01
+  drift_ratio_threshold: 0.2
+
+retraining:
+  min_auc_improvement: 0.01
