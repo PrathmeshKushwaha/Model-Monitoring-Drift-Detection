@@ -1,0 +1,23 @@
+artifact_path: file:///home/prathmesh/prat/project/Model Monitoring & Drift Detection/mlruns/422693308105850231/models/m-f32ebc46b381478b9a0bd9c8ca4ac11d/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.9.0
+model_id: m-f32ebc46b381478b9a0bd9c8ca4ac11d
+model_size_bytes: 3739
+model_uuid: m-f32ebc46b381478b9a0bd9c8ca4ac11d
+prompts: null
+run_id: 664206003a434a66bf8e3f49e732796b
+utc_time_created: '2026-02-05 09:39:33.447030'

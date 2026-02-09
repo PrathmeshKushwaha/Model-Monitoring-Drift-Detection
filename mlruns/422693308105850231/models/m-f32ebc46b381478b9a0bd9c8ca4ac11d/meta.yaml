@@ -1,0 +1,10 @@
+artifact_location: file:///home/prathmesh/prat/project/Model Monitoring & Drift Detection/mlruns/422693308105850231/models/m-f32ebc46b381478b9a0bd9c8ca4ac11d/artifacts
+creation_timestamp: 1770284373436
+experiment_id: '422693308105850231'
+last_updated_timestamp: 1770284376327
+model_id: m-f32ebc46b381478b9a0bd9c8ca4ac11d
+model_type: null
+name: model
+source_run_id: 664206003a434a66bf8e3f49e732796b
+status: 2
+status_message: null

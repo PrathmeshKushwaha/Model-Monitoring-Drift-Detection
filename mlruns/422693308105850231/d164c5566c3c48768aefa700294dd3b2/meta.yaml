@@ -1,0 +1,14 @@
+artifact_uri: file:///home/prathmesh/prat/project/Model Monitoring & Drift Detection/mlruns/422693308105850231/d164c5566c3c48768aefa700294dd3b2/artifacts
+end_time: 1770230018710
+entry_point_name: ''
+experiment_id: '422693308105850231'
+lifecycle_stage: active
+run_id: d164c5566c3c48768aefa700294dd3b2
+run_name: logreg_v1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1770230016011
+status: 3
+tags: []
+user_id: prathmesh
