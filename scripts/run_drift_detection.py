@@ -2,7 +2,7 @@ from pathlib import Path
 from src.monitoring.drift_detection import detect_feature_drift
 
 REFERENCE_PATH = Path("data/reference.csv")
-PRODUCTION_PATH = Path("data/production/pool.csv")
+PRODUCTION_PATH = Path("data/production/batch_covariate.csv")
 TARGET_COLUMN = "y"
 
 if __name__ == "__main__":

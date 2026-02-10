@@ -1,0 +1,40 @@
+artifact_path: /home/prathmesh/prat/project/Model Monitoring & Drift Detection/mlruns/1/models/m-852ec6cb83f14f76a74b2ae7ad525a46/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+is_signature_from_type_hint: false
+mlflow_version: 3.9.0
+model_id: m-852ec6cb83f14f76a74b2ae7ad525a46
+model_size_bytes: 3739
+model_uuid: m-852ec6cb83f14f76a74b2ae7ad525a46
+prompts: null
+run_id: c09ed4b8810b4f538396625e479b8757
+signature:
+  inputs: '[{"type": "long", "name": "age", "required": true}, {"type": "string",
+    "name": "job", "required": true}, {"type": "string", "name": "marital", "required":
+    true}, {"type": "string", "name": "education", "required": true}, {"type": "string",
+    "name": "default", "required": true}, {"type": "long", "name": "balance", "required":
+    true}, {"type": "string", "name": "housing", "required": true}, {"type": "string",
+    "name": "loan", "required": true}, {"type": "string", "name": "contact", "required":
+    true}, {"type": "long", "name": "day", "required": true}, {"type": "string", "name":
+    "month", "required": true}, {"type": "long", "name": "duration", "required": true},
+    {"type": "long", "name": "campaign", "required": true}, {"type": "long", "name":
+    "pdays", "required": true}, {"type": "long", "name": "previous", "required": true},
+    {"type": "string", "name": "poutcome", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1,
+    2]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-02-07 18:58:01.359527'
