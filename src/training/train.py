@@ -13,15 +13,18 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score, precision_score, recall_score
+from mlflow.models import infer_signature
 
 from src.utils.schema import NUMERICAL_FEATURES, CATEGORICAL_FEATURES, TARGET_COLUMN
 from src.utils.data_checks import validate_data
 
+mlflow.set_tracking_uri("sqlite:///mlflow.db")
+mlflow.set_experiment("bank-marketing-baseline")
 
 DATA_DIR = Path("data")
 
+
 def main():
-    # Load data
     train_df = validate_data(DATA_DIR / "train.csv")
     test_df = validate_data(DATA_DIR / "test.csv")
 
@@ -31,7 +34,6 @@ def main():
     X_test = test_df.drop(columns=[TARGET_COLUMN])
     y_test = (test_df[TARGET_COLUMN] == "yes").astype(int)
 
-    # Preprocessing
     preprocessor = ColumnTransformer(
         transformers=[
             ("num", StandardScaler(), NUMERICAL_FEATURES),
@@ -39,7 +41,6 @@ def main():
         ]
     )
 
-    # Model
     model = LogisticRegression(
         max_iter=1000,
         solver="lbfgs",
@@ -53,9 +54,6 @@ def main():
         ]
     )
 
-    mlflow.set_tracking_uri("file:mlruns")
-    mlflow.set_experiment("bank-marketing-baseline")
-
     with mlflow.start_run(run_name="logreg_v1"):
         pipeline.fit(X_train, y_train)
 
@@ -66,12 +64,22 @@ def main():
         precision = precision_score(y_test, y_pred)
         recall = recall_score(y_test, y_pred)
 
+        signature = infer_signature(X_train, pipeline.predict_proba(X_train))
+
         mlflow.log_param("model_type", "logistic_regression")
+        mlflow.log_param("train_rows", X_train.shape[0])
+        mlflow.log_param("test_rows", X_test.shape[0])
+
         mlflow.log_metric("auc", auc)
         mlflow.log_metric("precision", precision)
         mlflow.log_metric("recall", recall)
 
-        mlflow.sklearn.log_model(pipeline, artifact_path="model")
+        mlflow.sklearn.log_model(
+            pipeline,
+            artifact_path="model",
+            registered_model_name="bank-marketing",
+            signature=signature,
+        )
 
         print(f"AUC: {auc:.4f}, Precision: {precision:.4f}, Recall: {recall:.4f}")
 
